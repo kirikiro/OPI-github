@@ -113,3 +113,6 @@ pre code {
     overflow-x: auto;
     line-height: 1.5;
 }
+.stdout { color: blue; }
+.stdin { color: green; }
+.stderr { color: red; }
