@@ -8,6 +8,8 @@ body {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
+    overflow-wrap: break-word; /* Перенос длинных слов */
+    hyphens: auto; /* Автоматические переносы слов */
 }
 
 h1, h2, h3 {
@@ -16,6 +18,7 @@ h1, h2, h3 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
     margin-top: 40px;
+    overflow-wrap: break-word; /* Перенос заголовков */
 }
 
 h1 {
@@ -33,6 +36,8 @@ h3 {
 
 p {
     margin: 10px 0;
+    overflow-wrap: break-word; /* Перенос текста в параграфах */
+    hyphens: auto; /* Автоматические переносы слов */
 }
 
 ul, ol {
@@ -66,6 +71,7 @@ video {
     color: #666;
     margin-top: -10px;
     margin-bottom: 20px;
+    overflow-wrap: break-word; /* Перенос подписей */
 }
 
 table {
@@ -81,6 +87,7 @@ table, th, td {
 th, td {
     padding: 8px;
     text-align: left;
+    overflow-wrap: break-word; /* Перенос текста в таблицах */
 }
 
 footer {
@@ -101,7 +108,8 @@ code {
     padding: 2px 6px;
     border-radius: 4px;
     color: #d63333;
-    white-space: pre-wrap;
+    white-space: pre-wrap; /* Поддержка переносов строк */
+    overflow-wrap: break-word; /* Перенос длинных слов */
 }
 
 pre code {
@@ -110,8 +118,38 @@ pre code {
     margin: 20px 0;
     border-left: 4px solid #333;
     background-color: #f1f1f1;
-    overflow-x: auto;
+    overflow-x: auto; /* Прокрутка для длинных строк */
     line-height: 1.5;
+    overflow-wrap: break-word; /* Перенос длинных слов в коде */
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+    body {
+        margin: 20px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    code {
+        font-size: 12px;
+    }
+    pre code {
+        padding: 10px;
+        font-size: 12px;
+    }
+    table, th, td {
+        padding: 5px;
+        font-size: 12px;
+    }
 }
 .stdout { color: blue; }
 .stdin { color: green; }
