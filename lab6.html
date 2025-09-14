@@ -5,192 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа: [Название]</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Лабораторная работа №5. Основы работы в консоли Windows</h1>
+    <h1>Лабораторная работа №6. Основы работы в консоли Windows</h1>
     <div class="section">
-        <h2>Задание №1</h2>
-        <p>С помощью команд cd, dir, mkdir создать в рабочем каталоге текущего пользователя каталог console и в нём
-            структуру подкаталогов, показанную в столбце <strong>A</strong> таблицы с вариантами. Вывести в консоль
-            дерево
-            каталогов с помощью команды tree.</p>
-        <code>
-            <ol>
-                <li>chcp 65001</li>
-                <li>cd c/ Asus</li>
-                <li>mkdir console\abc\defgh</li>
-                <li>mkdir console\abc\ijklm</li>
-                <li>mkdir console\nop\qrstu</li>
-                <li>mkdir console\nop\vwxyz</li>
-                <li>cd console</li>
-                <li>tree</li>
-                <li>cd - переход в директорию</li>
-                <li>ls -R или tree</li>
-                <li>cd console\abc\ijklm</li>
-            </ol>
-        </code>
+        <h2>Задание 1</h2>
+        <p>С помощью
+            программы&nbsp;<code><a href="https://newsdo.vsu.by/pluginfile.php/269329/mod_assign/intro/series.exe">series</a></code>&nbsp;(её
+            описание см. ниже) и с помощью перенаправления потоков разработайте командный файл, который находит
+            минимальное, максимальное значение, сумму и среднее значение чисел из некоторого текстового файла, имя
+            которого должно задаваться первым параметром командной строки вызова командного файла. Все результаты должны
+            быть помещены в один текстовый файл, имя которого должно задаваться вторым параметром командной строки
+            вызова командного файла.</p>
+        <p>Например, пусть есть некоторый файл&nbsp;<code>a.txt</code>&nbsp;со следующим содержимым:</p>
+        <pre>5.6 9.0 3.4
+            7.8 1.2
+            7.6 3.2 0.1 5.4
+            9.8
+        </pre>
+        <p>Пусть разработанный командный файл имеет имя&nbsp;<code>calculate.cmd</code>, тогда запуск этого командного
+            файла можно осуществить с помощью команды:</p>
+        <pre>calculate.cmd a.txt b.txt</pre>
+        <p>После запуска данной команды содержимое файла&nbsp;<code>b.txt</code>&nbsp;должно быть следующим (порядок
+            строк может быть другим):</p>
+        <pre>MIN: 0.1
+            MAX: 9.8
+            SUM: 53.1
+            AVG: 5.31
+        </pre>
+        <p>Указание:</p>
+        <p>Перебор значений агрегирующих функций (MIN, MAX, SUM, AVG) организовать с помощью
+            команды&nbsp;<code>for</code>.</p>
+        <p>Самостоятельно изучить:</p>
+        <ul>
+            <li>обработку параметров, передаваемых командному файлу;</li>
+            <li>перенаправление потоков ввода и вывода;</li>
+            <li>команду for и способ выполнения нескольких команд в цикле&nbsp;<code>for</code>.</li>
+        </ul>
+        <p>Описание программы&nbsp;<code>series</code>:</p>
+        <p>Программе на вход (поток&nbsp;<code>STD_IN</code>) подаётся некоторое количество чисел (если вызывать
+            программу без перенаправления потоков, то эти значения через пробел, табуляцию, переход на новую строку,
+            вводятся с клавиатуры, ввод заканчивается комбинацией клавиш Ctrl+Z). Данная программа считывает значение
+            переменной окружения&nbsp;<code>FUNCTION</code>, которая задаёт имя некоторой агрегирующей функции.
+            Возможные значения:</p>
+        <dl>
+            <dt>MIN</dt>
+            <dd>&mdash;&nbsp;минимальное значение</dd>
+            <dt>MAX</dt>
+            <dd>&mdash;&nbsp;максимальное значение</dd>
+            <dt>SUM</dt>
+            <dd>&mdash;&nbsp;сумма значений</dd>
+            <dt>AVG</dt>
+            <dd>&mdash;&nbsp;среднее арифметическое значений</dd>
+        </dl>
+        <p>При этом имя переменной окружения и возможные значения переменной окружения должны задаваться только большими
+            буквами.</p>
+        <p>Результат выполнения программа выводит в поток&nbsp;<code>STD_OUT</code>.</p>
         <video controls>
-            <source src="media\lab5\1_ex.webm" type="video/webm">
+            <source src="media\lab6\lab6_1_ex.webm" type="video/webm">
             Ваш браузер не поддерживает видео.
         </video>
-    </div>
-    <div class="section">
-        <h2>Задание №2</h2>
-        <p>С помощью команды copy создайте в каталоге с названием, указанным в столбце <strong>B</strong>, файл с
-            названием about.me, в который впишите свои фамилию, имя и номер группы на
-            английском языке. С помощью команды type выведите содержимое этого файла в
-            консоль.<em>Указание</em>: для того, чтобы создать новый файл с помощью команды copy, необходимо
-            в
-            качестве имени файла-источника указать системное имя <strong>con</strong>. После ввода команды то, что будет
-            набираться с клавиатуры, будет записываться в файл. Для того, чтобы завершить ввод данных в файл, необходимо
-            нажать в консоли комбинацию клавиш Ctrl+Z, а затем Enter.</p>
-        <code>
-            <ol>
-                <li>copy con<a href="http://about.me/">about.me</a></li>
-                <li>type<a href="http://about.me">about.me</a></li>
-            </ol>
-                </code>
-        <video controls>
-            <source src="media\lab5\2_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №3</h2>
-        <p>Выберите англоязычную песню, в которой есть не менее 3-х куплетов и припев, создайте в каталоге с названием,
-            указанным в столбце <strong>C</strong> файлы с названием verse-1.txt, verse-2.txt и т.д., в каждый из
-            которых
-            впишите текст соответствующего куплета, а также создайте файл refrain (без расширения .txt), в который
-            поместите
-            строку "REFRAIN:", а далее &mdash; текст припева. В конце каждого файла добавьте по 2 пустные строки. Файлы
-            можно создавать в блокноте Windowns (Notepad). С помощью команды dir выведите содержимое данного каталога,
-            назовите преподавателю размер каждого файла.</p>
-        <code>
-            <ol>
-                <li>cd \console\nop\qrstu</li>
-                <li>copy con verse-1.txt</li>
-                <li>copy con verse-2.txt</li>
-                <li>copy con verse-3.txt</li>
-                <li>copy con refrain<br />REFRAIN: &lt;Текст&gt; &lt;пустая строка&gt; &lt;пустая строка&gt;</li>
-                <li>dir</li>
-            </ol>
-        </code>
-        <video controls>
-            <source src="media\lab5\3_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №4</h2>
-        <p>Скопируйте в каталог с названием, указанным в столбце <strong>D</strong>, все файлы с расширением .txt из
-            каталога, указанного в столбце <strong>C</strong>. Переименуйте с помощью команды rename файл refrain в
-            каталоге, указанном в столбце <strong>C</strong>, в файл refrain.tmp. Выведите дерево всех подкаталогов и
-            файлов
-            в каталоге console с помощью команды tree.</p>
-        <code>
-            <ol>
-                <li>copy /y %USERPROFILE%\console\nop\qrstu\*.txt %USERPROFILE%\console\nop\vwxyz\</li>
-                <li>rename %USERPROFILE%\console\nop\qrstu\refrain refrain.tmp</li>
-                <li>cd /d %USERPROFILE%\console</li>
-                <li>tree /f</li>
-            </ol>
-        </code>
-        <video controls>
-            <source src="media\lab5\4_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №5</h2>
-        <p>С помощью команды copy объедините все файлы с расширением .txt из каталога, указанного в столбце
-            <strong>C</strong>, в файл с именем song.out. Отобразите в консоли содержимое этого файла командой type, а
-            затем
-            выведите дерево каталогов командой tree.
-        </p>
-        <code>
-            <ol>
-                <li>cd /d %USERPROFILE%\console\nop\qrstu</li>
-                <li>copy /a *.txt song.out</li>
-                <li>type song.out</li>
-                <li>cd /d %USERPROFILE%\console</li>
-                <li>tree /f</li>
-            </ol>
-        </code>
-        <video controls>
-            <source src="media\lab5\5_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №6</h2>
-        <p>Перенесите файл song.out в каталог vwxyz с помощью команды move, а всем файлам с расширением .txt в каталоге,
-            указанном в столбце <strong>C</strong> установите атрибут "Скрытый" с помощью команды attrib. Выведите
-            дерево
-            каталогов. Выведите все файлы, в том числе и скрытые, из каталога, указанного в столбце
-            <strong>C</strong>.
-        </p>
-        <code>
-            <ol>
-                <li>move /y %USERPROFILE%\console\nop\qrstu\song.out %USERPROFILE%\console\nop\vwxyz\</li>
-                <li>attrib +h %USERPROFILE%\console\nop\qrstu\*.txt</li>
-                <li>cd /d %USERPROFILE%\console</li>
-                <li>tree /f</li>
-                <li>dir /a %USERPROFILE%\console\nop\qrstu (dir /a показывает <strong>все</strong>, включая
-                    скрытые)
-                </li>
-            </ol>
-        </code>
-        <video controls>
-            <source src="media\lab5\6_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №7</h2>
-        <p>Измените с помощью команды rename расширение файла verse-2.txt на verse-2.tmp в каталоге, указанном в столбце
-            <strong>D</strong>. Выведите в консоль все файлы с расширением .txt из каталога, указанного в столбце
-            <strong>D</strong>. Удалите с помощью команды del все файлы с расширением .tmp из всех подкаталогов.
-            Выведите
-            дерево каталогов.
-        </p>
-        <code>
-            <ol>
-                <li>cd /d %USERPROFILE%\console\nop\vwxyz</li>
-                <li>rename verse-2.txt verse-2.tmp</li>
-                <li>dir *.txt</li>
-                <li>del /s /q %USERPROFILE%\console\*.tmp</li>
-                <li>cd /d %USERPROFILE%\console</li>
-                <li>tree /f</li>
-            </ol>
-        </code>
-        <p>del /s рекурсивно удалит refrain.tmp и verse-2.tmp. После удаления в vwxyz останутся verse-1.txt, verse-3.txt
-            и
-            song.out</p>
-        <video controls>
-            <source src="media\lab5\7_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
-    <div class="section">
-        <h2>Задание №8</h2>
-        <p>Перенесите с помощью команды move каталог vwxyz из каталога console в домашний каталог текущего пользователя,
-            удалите с помощью команды rmdir каталог console со всем его содержимым. Выведите в консоль содержимое
-            каталога
-            vwxyz командой dir и содержимое файла song.out командой type.</p>
-        <code>
-            <ol>
-                <li>move /y %USERPROFILE%\console\nop\vwxyz %USERPROFILE%\</li>
-                <li>rmdir /s /q %USERPROFILE%\console</li>
-                <li>dir %USERPROFILE%\vwxyz</li>
-                <li>type %USERPROFILE%\vwxyz\song.out</li>
-        </ol>
-        </code>
-        <video controls>
-            <source src="media\lab5\8_ex.webm" type="video/webm">
-            Ваш браузер не поддерживает видео.
-        </video>
+        <pre><code>
+@echo off
+setlocal EnableDelayedExpansion
+
+if "%1"=="" (
+    echo Usage: %0 input_file output_file
+    exit /b 1
+)
+if "%2"=="" (
+    echo Usage: %0 input_file output_file
+    exit /b 1
+)
+
+set INPUT_FILE=%1
+set OUTPUT_FILE=%2
+
+if not exist "%INPUT_FILE%" (
+    echo Input file "%INPUT_FILE%" does not exist
+    exit /b 1
+)
+
+if exist "%OUTPUT_FILE%" del "%OUTPUT_FILE%"
+
+set FUNCTIONS=MIN MAX SUM AVG
+
+for %%F in (%FUNCTIONS%) do (
+    set FUNCTION=%%F
+    for /f "delims=" %%R in ('series ^< "%INPUT_FILE%"') do (
+        echo %%F: %%R>>"%OUTPUT_FILE%"
+    )
+)
+
+endlocal
+        </code></pre>
     </div>
     <footer>
         Автор: Шарко Евгений | Дата: 13.09.2025-14.09.2025 | GitHub Pages
